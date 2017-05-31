@@ -5,8 +5,11 @@ var morgan = require('morgan');
 var path = require('path');
 var mongoose = require('mongoose');
 
+//Set app
 var app = express();
 app.use(morgan('dev'));
+
+//Body Parser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true 
@@ -32,9 +35,12 @@ mongoose.connect(DB, function(err){
 });
 
 //Setting view engine to display the views
-app.set('views', __dirname + '/client/views');
+app.set('views', path.join(__dirname, '/client/views'));
 app.set('view engine', 'ejs');
-app.use(express.static(__dirname + '/client'));
+app.engine('html', require('ejs').renderFile);
+
+//Set static folder
+app.use(express.static(path.join(__dirname, 'client')));
 
 //Listen in on the connection
 app.listen(PORT, function(){

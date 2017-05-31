@@ -5,4 +5,4 @@ router.get('/', function(request, response){
     response.render('index.html');
 });
 
-module.exports = router
+module.exports = router;
