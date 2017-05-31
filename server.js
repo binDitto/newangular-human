@@ -14,8 +14,8 @@ app.use(bodyParser.urlencoded({
 }));
 
 //Routing
-var mainRouter = require('../routes/index');
-var apiRouter = require('../routes/api');
+var mainRouter = require('./routes/index');
+var apiRouter = require('./routes/api');
 app.use('/', mainRouter);
 app.use('/api', apiRouter);
 
