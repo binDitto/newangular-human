@@ -13,6 +13,12 @@ app.use(bodyParser.urlencoded({
 
 }));
 
+//Routing
+var mainRouter = require('../routes/index');
+var apiRouter = require('../routes/api');
+app.use('/', mainRouter);
+app.use('/api', apiRouter);
+
 //PORT and Database Connection
 var PORT = 8000 || process.env.PORT;
 var DB = 'localhost:27017/newangular-human';
